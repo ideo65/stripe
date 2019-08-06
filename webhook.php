@@ -12,7 +12,7 @@ switch ($event->type) {
   case 'invoice.created':
     $invoice_sub_id = $event->data->object->lines->data[0]->plan->id;
     $invoice_id = $event->data->object->id;
-    $plans = array('maint_niv_1','maint_heb_niv_1','quotidien');
+    $plans = array('abonnement_1','abonnement_2');
     if (in_array( $invoice_sub_id, $plans )) {
       \Stripe\InvoiceItem::update(
         $invoice_id,
